@@ -2,6 +2,7 @@ name: 04 Using Actions
 on: push
 jobs:
   build:
+    run: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
