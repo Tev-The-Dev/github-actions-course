@@ -33,6 +33,13 @@ jobs:
       - name: "Retrieve Variable"
         run: |
           echo "Repository Variable: ${{vars.MY_VAR}}"
-      - name: "Print Env Variables"
+      - name: "Print Env Variables" 
         run: |
-            echo "Workflow env ${{env.MY_WORKFLOW_VAR}}"
+            echo "Workflow env: ${{env.MY_WORKFLOW_VAR}}"
+            echo "Workflow Overwritten env: ${{env.MY_OVERWRITTEN_VAR}}"
+        env: 
+            MY_OVERWRITTEN_VAR: 'step'
+      - name: "Print Env Variable 2"
+        run: |
+            echo "Workflow env: ${{env.MY_WORKFLOW_VAR}}"
+            echo "Overwitten env: ${{env.MY_OVERWRITTEN_VAR}}"
