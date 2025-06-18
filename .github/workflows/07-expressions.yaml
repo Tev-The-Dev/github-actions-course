@@ -6,22 +6,22 @@ on:
       debug:
         type: boolean
         default: false
-run-name: "07 - Using Expressions | DEBUG -<'ON' if the debug input is true, 'OFF' otherwise>" 
+run-name: "07 - Using Expressions | DEBUG - ${{inputs.debug && 'ON' || 'OFF'}}"
 jobs:
-    echo:
-        runs-on: ubuntu-latest
-        steps:
-            - name: "[debug] Print start-up data"
-              if: ${{github.event.inputs.debug}} == true
-              run: |
-                echo "Triggered by: ${{github.event_name}}"
-                echo "Branch: ${{github.ref}}"
-                echo "Commit SHA: ${{github.sha}}"
-                echo "Runner OS: ${{runner.OS}}"
-            - name: "[debug] Print when triggered from main"
-              if: ${{github.event.inputs.debug}} == true && ${{github.event.workflow}} == main
-              run: |
-                 echo "I was triggered from main"
-            - name: "Normal Greeting"
-              run: |
-                 echo "Hello, World"
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "[debug] Print start-up data"
+        if: ${{inputs.debug}} == true
+        run: |
+          echo "Triggered by: ${{github.event_name}}"
+          echo "Branch: ${{github.ref}}"
+          echo "Commit SHA: ${{github.sha}}"
+          echo "Runner OS: ${{runner.OS}}"
+      - name: "[debug] Print when triggered from main"
+        if: ${{inputs.debug}} == true && ${{github.event.workflow}} == main
+        run: |
+          echo "I was triggered from main"
+      - name: "Normal Greeting"
+        run: |
+          echo "Hello, World"
