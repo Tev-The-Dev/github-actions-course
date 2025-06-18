@@ -10,9 +10,6 @@ env:
 jobs:
     echo:
         runs-on: ubuntu-latest
-        environment: 
-            prod
-            staging
         env:
             JOB_VAR: 'I am a job env var'
             OVERWRITTEN: "I have been overwritten at the job level"
