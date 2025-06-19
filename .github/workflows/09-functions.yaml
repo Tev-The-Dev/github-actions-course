@@ -8,14 +8,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Print PR title
-              run: ${{github.event.pull_request.title}}
+              run: "PR Title: ${{github.event.pull_request.title}}"
             - name: Print PR labels
               run: |
                 cat << EOF
-                ${{toJson(github.event.pull_request.labels)}}
+                "${{toJson(github.event.pull_request.labels)}}"
                 EOF
             - name: Bug Step
-              if: ${{failure() || (!cancelled() && contains(github.event.pull_request.title, 'fix'))}}
+              if: ${{failure() && (!cancelled() && contains(github.event.pull_request.title, 'fix'))}}
               run: I am a bug fix
             - name: Sleep for 20 seconds
               run: sleep 20
