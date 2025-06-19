@@ -15,3 +15,9 @@ jobs:
             - name: I will execute
               if: ${{failure()}}
               run: I will print if any previous setp fails
+            - name: I will execute
+              if: ${{ !cancelled()}}
+              run: I will always pring, except when the workflow is cancelled
+            - name: I will execute when cancelled
+              if: ${{ cancelled() }}
+              run: I will only execute when the workflow is cancelled
