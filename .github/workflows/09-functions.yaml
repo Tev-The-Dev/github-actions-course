@@ -12,3 +12,6 @@ jobs:
             - name: I will be skipped
               if: ${{success()}}
               run: "I will print if previous steps succeed" 
+            - name: I will execute
+              if: ${{failure()}}
+              run: I will print if any previous setp fails
