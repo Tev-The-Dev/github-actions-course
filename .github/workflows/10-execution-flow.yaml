@@ -1,0 +1,19 @@
+name: 10 - Controlling The Execution Flow
+on:
+    workflow_dispatch:
+        inputs:
+            pass-unit-tests:
+                type: boolean
+                default: false
+jobs:
+    lint-build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Running unit tests
+              run: |
+                echo "Running tests..."
+            - name: Failing tests
+              run: |
+                exit 1
+                if: pass-unit-tests == false
+
