@@ -30,4 +30,4 @@ jobs:
         steps:
             - name: Deploying to nonprod
               run: |
-                "echo Deploying to nonprod"
+                echo "Deploying to nonprod"
