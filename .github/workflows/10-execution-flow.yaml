@@ -39,3 +39,21 @@ jobs:
             - name: Running E2E tests
               run: |
                 echo Running E2E tests
+    load-tests:
+        runs-on: ubunutu-latest
+        needs:
+            - deploy-nonprod
+        steps:
+            - name: Running load tests
+              run: |
+                echo Running load test
+
+    deploy-prod:
+        runs-on: ubuntu-latest
+        needs:
+            - e2e-tests
+            - load-tests
+        steps:
+            - name: Deploying to prod
+              run: |
+                echo Deploying to prod...
