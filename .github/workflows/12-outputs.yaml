@@ -1,0 +1,17 @@
+name: 12 - Workiung with Outputs
+on:
+    workflow_dispatch:
+        inputs:
+            build-stats:
+                type: choice
+                options:
+                  - success
+                  - failure
+                default: success
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -  name: Print GITHUB_OUTPUT path
+               run: |
+                    echo${{github.GITHUB_OUTPUT}}
