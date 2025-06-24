@@ -18,4 +18,4 @@ jobs:
             - name: Build
               id: build
               run: |
-                echo "status=${{inputs.build-stats}} >> $GITHUB_OUPUT"
+                echo status=${{inputs.build-stats}} >> $GITHUB_OUPUT
