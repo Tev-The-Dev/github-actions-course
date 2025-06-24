@@ -1,11 +1,11 @@
-name: 11 - Wroking with Inputs
+name: 11 - Working with Inputs
 on:
     workflow_dispatch:
         inputs:
             dry-run:
               type: boolean
               default: true
-              description: "Skip deployment and only print bild ouput"
+              description: "Skip deployment and only print build ouput"
             target:
                 type: environment
                 required: true
