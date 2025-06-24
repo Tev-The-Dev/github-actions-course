@@ -1,4 +1,4 @@
-name: 12 - Workiung with Outputs
+name: 12 - Working with Outputs
 on:
     workflow_dispatch:
         inputs:
@@ -14,4 +14,4 @@ jobs:
         steps:
             -  name: Print GITHUB_OUTPUT path
                run: |
-                    echo${{github.GITHUB_OUTPUT}}
+                    echo $GITHUB_OUTPUT
