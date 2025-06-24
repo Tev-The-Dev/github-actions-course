@@ -27,6 +27,8 @@ jobs:
                 echo output1=${{inputs.build-stats}} >> $GITHUB_OUTPUT
                 echo Before intentional overwrite
                 cat $GITHUB_OUTPUT
+            - name: Step with mistake
+              run: |
                 echo "mistake=true" > $GITHUB_OUTPUT
                 echo After intentional overwrite
                 cat $GITHUB_OUTPUT
