@@ -27,7 +27,7 @@ jobs:
               run: |
                 echo Builing from tag ${{inputs.tag}}
     deploy:
-        runs-on: ubunut-latest
+        runs-on: ubuntu-latest
         needs: build
         if: !inputs.dry-run
         environment: inputs.target
