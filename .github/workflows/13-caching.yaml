@@ -14,11 +14,11 @@ jobs:
         working-directory: 13-caching/react-app
     steps:
       - name: Checkout code
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
         with:
           path: 13-caching/react-app
       - name: Setup Node
-        uses: actions/setup-node@4
+        uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Install dependencies
