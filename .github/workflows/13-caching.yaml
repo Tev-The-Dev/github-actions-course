@@ -18,7 +18,7 @@ jobs:
         with:
           path: 13-caching/react-app
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Install dependencies
