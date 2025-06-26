@@ -18,7 +18,9 @@ jobs:
               with:
                 path: 13-caching/react-app
             - name: Setup Node
-              uses: Node/v20.x
+              uses: actions/setup-nodev4
+              with:
+                node-version: 20
             - name: Install dependencies
               run: npm ci
             - name: Testing
