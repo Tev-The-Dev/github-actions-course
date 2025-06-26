@@ -61,7 +61,6 @@ jobs:
 
       - name: Download Cached Dependencies
         id: cache
-        if: ${{inputs.use-cache}}
         uses: actions/cache@v3
         with:
           key: ${{ needs.install-deps.outputs.deps-cache-key}}
