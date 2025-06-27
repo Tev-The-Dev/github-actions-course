@@ -23,3 +23,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{inputs.node-version}}
+      - name: Download cached dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+            key: deps-node-modules-${{ hashFiles('14-artifacts/react-app/package-lock.json') }}
+            path: 14-artifacts/react-app/node_modules
