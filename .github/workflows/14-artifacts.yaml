@@ -41,3 +41,14 @@ jobs:
         with:
             name: 'app'
             path: '14-artifacts/react-app/build'
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test-build
+    steps:
+        - name: Download build files
+          uses: actions/download-artifcat@v4
+          with:
+            name: app
+            path: build
+        - name: Show folder structure
+          run: ls -R
