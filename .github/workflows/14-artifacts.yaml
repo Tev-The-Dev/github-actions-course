@@ -1,0 +1,25 @@
+name: 14 - Working with Artifacts
+on:
+  workflow_dispatch:
+    inputs:
+      node-version:
+        type: choice
+        options:
+          - 18.x
+          - 20.x
+          - 21.x
+        default: 20.x
+        description: Node Version
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 14-artifacts/react-app
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{inputs.node-version}}
