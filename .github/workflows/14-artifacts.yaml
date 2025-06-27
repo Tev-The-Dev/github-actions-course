@@ -10,10 +10,10 @@ on:
           - 21.x
         default: 20.x
         description: Node Version
+env:
+        build-artifact-key: app-${{ github.sha }}
 jobs:
   test-build:
-    environment:
-        build-artifact-key = app-${{ github.sha }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,7 +41,7 @@ jobs:
       - name: Upload build files
         uses: actions/upload-artifact@v4
         with:
-            name: build-artifact-key
+            name: ${{env.build-artifact-key}}
             path: '14-artifacts/react-app/build'
   deploy:
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
         - name: Download build files
           uses: actions/download-artifact@v4
           with:
-            name: build-artifact-key
+            name: ${{env.build-artifact-key}}
             path: build
         - name: Show folder structure
           run: ls -R
