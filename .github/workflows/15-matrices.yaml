@@ -16,9 +16,9 @@ jobs:
                 include:
                     - os: ubuntu-latest
                       node-version: 16.x
-                    - os: ubuntu-latest
-                      tag: experimental
-                      node-version: 21.x
+                    # - os: ubuntu-latest
+                    #   tag: experimental
+                    #   node-version: 21.x
 
         steps:
             - name: Setup node
