@@ -4,7 +4,7 @@ on:
 
 jobs:
     backwards-compatability:
-        runs-on: ubuntu-latest
+        runs-on: ${{matrix.os}}
         name: ${{matrix.os}}-${{matrix.node}}
         strategy:
             fail-fast: true
@@ -24,12 +24,12 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v3
               with:
-                node-version: ${{matrix.node}}
+                node-version: ${{matrix.node-version}}
             - name: Fail if experimental
               if: ${{matrix.tag == 'experimental'}}
               run: exit 1
             - name: Perform some tests
               run: |
                 sleep 10
-                echo "Running tests on OS ${{matrix.os}} and NodeJS ${{matrix.node}}"
+                echo "Running tests on OS ${{matrix.os}} and NodeJS ${{matrix.node-version}}"
             
