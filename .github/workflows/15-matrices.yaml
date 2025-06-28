@@ -16,7 +16,7 @@ jobs:
                 include:
                     - os: ubuntu-latest
                       node-version: 16.x
-                    - os: ubunutu-latest
+                    - os: ubuntu-latest
                       tag: experimental
                       node-version: 21.x
 
