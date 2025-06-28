@@ -1,35 +1,36 @@
 name: 15 - Working with Matrices
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    backwards-compatability:
-        runs-on: ${{matrix.os}}
-        name: ${{matrix.os}}-${{matrix.node-version}}
-        strategy:
-            fail-fast: false
-            matrix:
-                node-version: [18.x, 20.x, 21.x]
-                os:
-                    - ubuntu-latest
-                    - windows-latest
-                include:
-                    - os: ubuntu-latest
-                      node-version: 16.x
-                    # - os: ubuntu-latest
-                    #   tag: experimental
-                    #   node-version: 21.x
+  backwards-compatability:
+    runs-on: ${{matrix.os}}
+    name: ${{matrix.os}}-${{matrix.node-version}}
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x, 20.x, 21.x]
+        os:
+          - ubuntu-latest
+          - windows-latest
+        include:
+          - os: ubuntu-latest
+            node-version: 16.x
+          - os: ubuntu-latest
+            tag: experimental
+            node-version: 21.x
 
-        steps:
-            - name: Setup node
-              uses: actions/setup-node@v3
-              with:
-                node-version: ${{matrix.node-version}}
-            # - name: Fail if experimental
-            #   if: ${{matrix.tag == 'experimental'}}
-            #   run: exit 1
-            - name: Perform some tests
-              run: |
-                echo "Running tests on OS ${{matrix.os}} and NodeJS ${{matrix.node-version}}"
-            - name: Upload test results
-              run: echo Uploading test results
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: Fail if experimental
+        if: ${{matrix.tag == 'experimental'}}
+        run: exit 1
+      - name: Perform some tests
+        run: |
+          sleep 10
+          echo "Running tests on OS ${{matrix.os}} and NodeJS ${{matrix.node-version}}"
+      - name: Upload test results
+        run: echo Uploading test results
