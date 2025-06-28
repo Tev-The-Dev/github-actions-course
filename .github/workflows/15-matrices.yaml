@@ -38,10 +38,14 @@ jobs:
     runs-on: ubuntu-latest
     name: ${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}
     strategy:
-        matrix: 
-            color: [red, green]
-            shape: [circle, square]
-            size: [small, large]
-            include:
-                - color: red
-                  shape: triangle
+      matrix:
+        color: [red, green]
+        shape: [circle, square]
+        size: [small, large]
+        include:
+          - color: red
+            shape: triangle
+    steps:
+      - name: Dummy step
+        run: |
+          echo "Printing the matrix's color: ${{matrix.color}}, shape: ${{matrix.shape}}, and size ${{matrix.size}}" 
