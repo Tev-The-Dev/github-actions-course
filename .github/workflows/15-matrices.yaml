@@ -7,11 +7,18 @@ jobs:
         runs-on: ubuntu-latest
         name: ${{matrix.os}}-${{matrix.node}}
         strategy:
+            fail-fast: false
             matrix:
                 node: [18.x, 20.x, 21.x]
                 os:
                     - ubuntu-latest
                     - windows-latest
+                include:
+                    - os: ubuntu-latest
+                      node-version: 16.x
+                    - os: ubunutu-latest
+                      tag: experiemental
+                      node-version: 21.x
 
         steps:
             - name: Setup node
